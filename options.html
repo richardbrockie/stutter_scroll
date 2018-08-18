@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>
+        .table_class {
+            width: 600px;
+        }
+        .first_column {
+            width: 130px;
+        }
+        .set_margins {
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+<h2>Settings</h2>
+<form>
+    <h3>Pauses</h3>
+    <table class="table_class">
+        <tr>
+            <td class="first_column">Initial pause (s):</td>
+            <td><input type="number" id="initial_pause"></td>
+        </tr>
+        <tr>
+            <td>Stutter pause (s):</td>
+            <td><input type="number" id="stutter_pause"></td>
+        </tr>
+    </table>
+
+    <div class="set_margins" style="padding-top: 15px;">Pause here if found in page source: </div>
+
+    <table class="table_class">
+        <tr>
+            <td class="first_column">CSS class:</td>
+            <td><input size="30" type="text" id="stutter_class"></td>
+        </tr>
+    </table>
+
+    <h3>List of webpages</h3>
+
+    <div class="set_margins">One URL per line: </div>
+
+    <textarea rows="12" cols="70" id="url_list"></textarea>
+
+    <div class="set_margins" style="padding-top: 15px;">
+        <button type="submit">Save Settings</button>
+    </div>
+</form>
+
+<script src="options.js"></script>
+
+</body>
+
+</html>

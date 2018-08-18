@@ -1,0 +1,2 @@
+outline-block-24px.svg is taken from the "Material Design" iconset designed by Google:
+https://google.github.io/material-design-icons/.
