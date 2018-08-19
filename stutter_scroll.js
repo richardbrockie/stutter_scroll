@@ -2,8 +2,8 @@ const SCRIPT_NAME = "StutterScroll";
 const PAGE_LOAD_TIMEOUT_SECONDS = 15;
 const APPLICABLE_PROTOCOLS = ["http:", "https:"];
 
-const DEBUG_LOG_TO_CONSOLE = true;
-// const DEBUG_LOG_TO_CONSOLE = false;
+// const DEBUG_LOG_TO_CONSOLE = true;
+const DEBUG_LOG_TO_CONSOLE = false;
 
 // global parameters with working defaults...
 let active = false;
