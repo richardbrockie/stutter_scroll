@@ -14,7 +14,7 @@ let stutter_pause = 1;
 let stutter_class = 'stutter_scroll_stop_here';
 
 // let url_list = 'https://ontheday.net/\nhttps://google.com/';
-let url_list = 'http://127.0.0.1:8000/2018/bay_climb/tournament/open_men/\nhttp://127.0.0.1:8000/2018/bay_climb/otd_ftw/\nhttp://127.0.0.1:8000/2018/bay_climb/tournament/men_fixed/\nhttp://127.0.0.1:8000/2018/bay_climb/otd_ftw\nhttp://127.0.0.1:8000/2018/bay_climb/tournament/open_women/\nhttp://127.0.0.1:8000/2018/bay_climb/otd_ftw/\nhttp://127.0.0.1:8000/2018/bay_climb/tournament/women_fixed/\nhttp://127.0.0.1:8000/2018/bay_climb/otd_ftw/';
+let url_list = 'http://127.0.0.1:8000/2018/bay_climb/tournament/open_men/\nhttp://127.0.0.1:8000/2018/bay_climb/otd_ftw/\nhttp://127.0.0.1:8000/2018/bay_climb/tournament/men_fixed/\nhttp://127.0.0.1:8000/2018/bay_climb/otd_ftw/\nhttp://127.0.0.1:8000/2018/bay_climb/tournament/open_women/\nhttp://127.0.0.1:8000/2018/bay_climb/otd_ftw/\nhttp://127.0.0.1:8000/2018/bay_climb/tournament/women_fixed/\nhttp://127.0.0.1:8000/2018/bay_climb/otd_ftw/';
 
 let split_urls = 'tbd';
 let url_index = 0;
@@ -104,6 +104,7 @@ function startStutter() {
     debug_log('startStutter: ' + active);
 
     if (active) {
+        // get parameter
         let gettingItem = browser.storage.sync.get('stutter_class');
         gettingItem.then((res) => {
             stutter_class = res.stutter_class || stutter_class;
@@ -232,6 +233,7 @@ function loadPage() {
                         console.log(tab);
                     }
 
+                    // get parameter
                     let gettingItem = browser.storage.sync.get('initial_pause');
                     gettingItem.then((res) => {
                         initial_pause = res.initial_pause || initial_pause;
