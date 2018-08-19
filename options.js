@@ -7,7 +7,7 @@ let DEFAULT_STUTTER_PAUSE = "1";
 let DEFAULT_STUTTER_CLASS = "stutter_scroll_stop_here";
 
 // let DEFAULT_URL_LIST = "https://ontheday.net/\nhttps://google.com/";
-let DEFAULT_URL_LIST = 'http://127.0.0.1:8000/2018/bay_climb/tournament/open_men/\nhttp://127.0.0.1:8000/2018/bay_climb/otd_ftw/\nhttp://127.0.0.1:8000/2018/bay_climb/tournament/men_fixed/\nhttp://127.0.0.1:8000/2018/bay_climb/otd_ftw\nhttp://127.0.0.1:8000/2018/bay_climb/tournament/open_women/\nhttp://127.0.0.1:8000/2018/bay_climb/otd_ftw/\nhttp://127.0.0.1:8000/2018/bay_climb/tournament/women_fixed/\nhttp://127.0.0.1:8000/2018/bay_climb/otd_ftw/';
+let DEFAULT_URL_LIST = 'http://127.0.0.1:8000/2018/bay_climb/tournament/open_men/\nhttp://127.0.0.1:8000/2018/bay_climb/otd_ftw/\nhttp://127.0.0.1:8000/2018/bay_climb/tournament/men_fixed/\nhttp://127.0.0.1:8000/2018/bay_climb/otd_ftw/\nhttp://127.0.0.1:8000/2018/bay_climb/tournament/open_women/\nhttp://127.0.0.1:8000/2018/bay_climb/otd_ftw/\nhttp://127.0.0.1:8000/2018/bay_climb/tournament/women_fixed/\nhttp://127.0.0.1:8000/2018/bay_climb/otd_ftw/';
 
 function saveOptions(e) {
     e.preventDefault();

@@ -2,8 +2,8 @@ const SCRIPT_NAME = "StutterScroll";
 const PAGE_LOAD_TIMEOUT_SECONDS = 15;
 const APPLICABLE_PROTOCOLS = ["http:", "https:"];
 
-// const DEBUG_LOG_TO_CONSOLE = true;
-const DEBUG_LOG_TO_CONSOLE = false;
+const DEBUG_LOG_TO_CONSOLE = true;
+// const DEBUG_LOG_TO_CONSOLE = false;
 
 // global parameters with working defaults...
 let active = false;
@@ -14,7 +14,7 @@ let stutter_pause = 1;
 let stutter_class = 'stutter_scroll_stop_here';
 
 // let url_list = 'https://ontheday.net/\nhttps://google.com/';
-let url_list = 'http://127.0.0.1:8000/2018/bay_climb/tournament/open_men/\nhttp://127.0.0.1:8000/2018/bay_climb/otd_ftw/\nhttp://127.0.0.1:8000/2018/bay_climb/tournament/men_fixed/\nhttp://127.0.0.1:8000/2018/bay_climb/otd_ftw\nhttp://127.0.0.1:8000/2018/bay_climb/tournament/open_women/\nhttp://127.0.0.1:8000/2018/bay_climb/otd_ftw/\nhttp://127.0.0.1:8000/2018/bay_climb/tournament/women_fixed/\nhttp://127.0.0.1:8000/2018/bay_climb/otd_ftw/';
+let url_list = 'http://127.0.0.1:8000/2018/bay_climb/tournament/open_men/\nhttp://127.0.0.1:8000/2018/bay_climb/otd_ftw/\nhttp://127.0.0.1:8000/2018/bay_climb/tournament/men_fixed/\nhttp://127.0.0.1:8000/2018/bay_climb/otd_ftw/\nhttp://127.0.0.1:8000/2018/bay_climb/tournament/open_women/\nhttp://127.0.0.1:8000/2018/bay_climb/otd_ftw/\nhttp://127.0.0.1:8000/2018/bay_climb/tournament/women_fixed/\nhttp://127.0.0.1:8000/2018/bay_climb/otd_ftw/';
 
 let split_urls = 'tbd';
 let url_index = 0;
@@ -125,7 +125,8 @@ function determinePages() {
         // get parameter
         let gettingItem = browser.storage.sync.get('url_list');
         gettingItem.then((res) => {
-            url_list = res.url_list || url_list;
+            // url_list = res.url_list || url_list;
+            url_list = url_list;
 
             split_urls = url_list.split('\n');
 
