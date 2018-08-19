@@ -41,7 +41,6 @@ function debug_log(message = '') {
 
 function testForValidTab(url) {
     // allows starting from a new tab...
-
     const NEW_TAB_STRING = "about:newtab";
     const APPLICABLE_PROTOCOLS = ["http:", "https:"];
 
