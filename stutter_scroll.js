@@ -104,6 +104,7 @@ function startStutter() {
     debug_log('startStutter: ' + active);
 
     if (active) {
+        // get parameter
         let gettingItem = browser.storage.sync.get('stutter_class');
         gettingItem.then((res) => {
             stutter_class = res.stutter_class || stutter_class;
@@ -125,8 +126,7 @@ function determinePages() {
         // get parameter
         let gettingItem = browser.storage.sync.get('url_list');
         gettingItem.then((res) => {
-            // url_list = res.url_list || url_list;
-            url_list = url_list;
+            url_list = res.url_list || url_list;
 
             split_urls = url_list.split('\n');
 
@@ -233,6 +233,7 @@ function loadPage() {
                         console.log(tab);
                     }
 
+                    // get parameter
                     let gettingItem = browser.storage.sync.get('initial_pause');
                     gettingItem.then((res) => {
                         initial_pause = res.initial_pause || initial_pause;
