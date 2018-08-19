@@ -1,6 +1,5 @@
 const SCRIPT_NAME = "StutterScroll";
 const PAGE_LOAD_TIMEOUT_SECONDS = 15;
-const APPLICABLE_PROTOCOLS = ["http:", "https:"];
 
 // const DEBUG_LOG_TO_CONSOLE = true;
 const DEBUG_LOG_TO_CONSOLE = false;
@@ -39,13 +38,21 @@ function debug_log(message = '') {
     }
 }
 
-/*
-Returns true only if the URL's protocol is in APPLICABLE_PROTOCOLS.
-*/
-function protocolIsApplicable(url) {
-  let anchor =  document.createElement('a');
-  anchor.href = url;
-  return APPLICABLE_PROTOCOLS.includes(anchor.protocol);
+
+function testForValidTab(url) {
+    // allows starting from a new tab...
+
+    const NEW_TAB_STRING = "about:newtab";
+    const APPLICABLE_PROTOCOLS = ["http:", "https:"];
+
+    if (url === NEW_TAB_STRING ) {
+        return true;
+    }
+    else {
+        let anchor = document.createElement('a');
+        anchor.href = url;
+        return APPLICABLE_PROTOCOLS.includes(anchor.protocol);
+    }
 }
 
 
@@ -73,11 +80,13 @@ function toggleStutter() {
     else {
         // only proceed if we are on a regular tab...
         let gettingTab = browser.tabs.query({active: true});
-        gettingTab.then((tab) => {
-            let initial_tab = tab[0];
-            initial_tab_id = initial_tab.id;
+        gettingTab.then((tab_list) => {
+            let starting_tab = tab_list[0];
 
-            if (protocolIsApplicable(initial_tab.url)) {
+            function gettingStarted(this_tab) {
+                initial_tab = this_tab;
+                initial_tab_id = initial_tab.id;
+
                 active = true;
 
                 debug_log('starting');
@@ -87,14 +96,18 @@ function toggleStutter() {
                 browser.browserAction.setIcon({path: "icons/stutter_scroll_disable.svg"});
                 browser.browserAction.setTitle({title: "Stop Stutter Scroll"});
             }
-            else {
-                debug_log('INVALID tab!');
 
-                browser.browserAction.setIcon({path: "icons/outline-block-24px.svg"});
-                browser.browserAction.setTitle({title: "Invalid tab!"});
-
-                setTimeout(setDormantState, 300);
+            // open a new tab if required
+            if (testForValidTab(starting_tab.url)) {
+                gettingStarted(starting_tab);
             }
+            else {
+                let creatingTab = browser.tabs.create({active: true});
+                creatingTab.then((created_tab) => {
+                    gettingStarted(created_tab);
+                })
+            }
+
         });
     }
 }
