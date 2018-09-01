@@ -25,6 +25,10 @@ let initial_tab_id = null;
 
 let activeTimeout = null;
 
+const WAIT_TIME_INCREMENT = 250;
+let requiredWaitTime = null;
+let elapsedWaitTime = null;
+
 
 function debug_log(message = '') {
     if (DEBUG_LOG_TO_CONSOLE) {
@@ -289,8 +293,12 @@ function loadPage() {
                             // explicitly indicate that we are at the start of the page...
                             stutter_index = 0;
 
-                            debug_log('Calling stutterPage - timeout: ' + initial_pause);
-                            activeTimeout = setTimeout(stutterPage, initial_pause * 1000);
+                            // debug_log('Calling stutterPage - timeout: ' + initial_pause);
+                            // activeTimeout = setTimeout(stutterPage, initial_pause * 1000);
+                            //
+                            debug_log('Calling waitForSpecifiedTime - timeout (s): ' + initial_pause);
+                            requiredWaitTime = initial_pause * 1000;
+                            activeTimeout = setTimeout(waitForSpecifiedTime, WAIT_TIME_INCREMENT);
                         });
 
                 });
@@ -299,6 +307,33 @@ function loadPage() {
     });
 }
 
+
+function waitForSpecifiedTime() {
+    debug_log('waitForSpecifiedTime: ' + active + ', wait time (ms): ' + requiredWaitTime);
+
+    let gettingTab = browser.tabs.query({active: true});
+    gettingTab.then((tab) => {
+        let current_tab = tab[0];
+
+        if (current_tab.id !== initial_tab_id) {
+            setDormantState();
+            return;
+        }
+
+        if (active) {
+            elapsedWaitTime += WAIT_TIME_INCREMENT;
+            if (elapsedWaitTime >= requiredWaitTime) {
+                debug_log('Wait complete - scroll the page... (ms) ' + elapsedWaitTime);
+                stutterPage();
+            }
+            else {
+                // continue waiting...
+                debug_log('Continue waiting... (ms) ' + elapsedWaitTime);
+                activeTimeout = setTimeout(waitForSpecifiedTime, WAIT_TIME_INCREMENT);
+            }
+        }
+    });
+}
 
 function stutterPage() {
     debug_log('stutterPage: ' + active);
@@ -332,10 +367,16 @@ function stutterPage() {
 
                     stutter_pause = res.stutter_pause || stutter_pause;
 
-                    debug_log('Calling stutterPage - timeout: ' + stutter_pause);
-                    activeTimeout = setTimeout(stutterPage, stutter_pause * 1000);
+                    // debug_log('Calling stutterPage - timeout: ' + stutter_pause);
+                    // activeTimeout = setTimeout(stutterPage, stutter_pause * 1000);
+                    //
+                    debug_log('Calling waitForSpecifiedTime - timeout (s): ' + stutter_pause);
+                    elapsedWaitTime = 0;
+                    requiredWaitTime = stutter_pause * 1000;
+                    activeTimeout = setTimeout(waitForSpecifiedTime, WAIT_TIME_INCREMENT);
             });
         }
+
     });
 }
 

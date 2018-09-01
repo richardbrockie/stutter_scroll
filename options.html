@@ -24,12 +24,16 @@
     <h3>Pauses</h3>
     <table class="table_class">
         <tr>
+            <td>Valid range:</td>
+            <td>1 &ndash; 60 seconds</td>
+        </tr>
+        <tr>
             <td class="first_column">Initial pause (s):</td>
-            <td><input type="number" id="initial_pause" min="0" max="3600"></td>
+            <td><input type="number" id="initial_pause" min="1" max="60"></td>
         </tr>
         <tr>
             <td>Stutter pause (s):</td>
-            <td><input type="number" id="stutter_pause" min="0" max="3600"></td>
+            <td><input type="number" id="stutter_pause" min="1" max="60"></td>
         </tr>
     </table>
 
