@@ -190,8 +190,13 @@ function loadPage() {
             //
             // todo: need to validate the urls somewhere...
 
-            if (page_url.length === 0 || page_url === current_tab.url) {
-                loadPage();
+            // if (page_url.length === 0 || page_url === current_tab.url) {
+            //     loadPage();
+            //     return;
+            // }
+
+            if (page_url.length === 0 ) {
+                setDormantState();
                 return;
             }
 
@@ -215,29 +220,53 @@ function loadPage() {
                         return tab.status === 'complete' && tab.url === page_url;
                     }
 
-                    if (!isComplete(tab)) {
-                        return new Promise((resolve, reject) => {
-                            const waitForPageLoadTimeout = setTimeout(
-                                function giveUp() {
-                                    browser.tabs.onUpdated.removeListener(onUpdated);
-                                    reject(new Error('Tab never reached the "complete" state, just ' + tab.status + ' on ' + tab.url));
-                                    setDormantState();
-                                },
-                                PAGE_LOAD_TIMEOUT_SECONDS * 1000
-                            );
+                    // if (!isComplete(tab)) {
+                    //     return new Promise((resolve, reject) => {
+                    //         const waitForPageLoadTimeout = setTimeout(
+                    //             function giveUp() {
+                    //                 browser.tabs.onUpdated.removeListener(onUpdated);
+                    //                 reject(new Error('Tab never reached the "complete" state, just ' + tab.status + ' on ' + tab.url));
+                    //                 setDormantState();
+                    //             },
+                    //             PAGE_LOAD_TIMEOUT_SECONDS * 1000
+                    //         );
+                    //
+                    //         function onUpdated(tabId, changeInfo, updatedTab) {
+                    //             // Must use updatedTab below; using just `tab` seems to remain
+                    //             // stuck to about:blank.
+                    //             if (tabId === updatedTab.id && isComplete(updatedTab)) {
+                    //                 clearTimeout(waitForPageLoadTimeout);
+                    //                 browser.tabs.onUpdated.removeListener(onUpdated);
+                    //                 resolve(updatedTab);
+                    //             }
+                    //         }
+                    //         browser.tabs.onUpdated.addListener(onUpdated);
+                    //     });
+                    // }
 
-                            function onUpdated(tabId, changeInfo, updatedTab) {
-                                // Must use updatedTab below; using just `tab` seems to remain
-                                // stuck to about:blank.
-                                if (tabId === updatedTab.id && isComplete(updatedTab)) {
-                                    clearTimeout(waitForPageLoadTimeout);
-                                    browser.tabs.onUpdated.removeListener(onUpdated);
-                                    resolve(updatedTab);
-                                }
+                    // sets listener for the page load...
+                    return new Promise((resolve, reject) => {
+                        const waitForPageLoadTimeout = setTimeout(
+                            function giveUp() {
+                                browser.tabs.onUpdated.removeListener(onUpdated);
+                                reject(new Error('Tab never reached the "complete" state, just ' + tab.status + ' on ' + tab.url));
+                                setDormantState();
+                            },
+                            PAGE_LOAD_TIMEOUT_SECONDS * 1000
+                        );
+
+                        function onUpdated(tabId, changeInfo, updatedTab) {
+                            // Must use updatedTab below; using just `tab` seems to remain
+                            // stuck to about:blank.
+                            if (tabId === updatedTab.id && isComplete(updatedTab)) {
+                                clearTimeout(waitForPageLoadTimeout);
+                                browser.tabs.onUpdated.removeListener(onUpdated);
+                                resolve(updatedTab);
                             }
-                            browser.tabs.onUpdated.addListener(onUpdated);
-                        });
-                    }
+                        }
+                        browser.tabs.onUpdated.addListener(onUpdated);
+                    });
+
                 })
                 .then((tab) => {
 
