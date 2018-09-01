@@ -2,8 +2,8 @@
 
 // duplication of constants is annoying...
 
-let DEFAULT_INITIAL_PAUSE = "2";
-let DEFAULT_STUTTER_PAUSE = "1";
+let DEFAULT_INITIAL_PAUSE = "5";
+let DEFAULT_STUTTER_PAUSE = "8";
 let DEFAULT_STUTTER_CLASS = "stutter_scroll_stop_here";
 
 // let DEFAULT_URL_LIST = "https://ontheday.net/\nhttps://google.com/";

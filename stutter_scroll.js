@@ -7,8 +7,8 @@ const DEBUG_LOG_TO_CONSOLE = false;
 // global parameters with working defaults...
 let active = false;
 
-let initial_pause = 2;
-let stutter_pause = 1;
+let initial_pause = 5;
+let stutter_pause = 8;
 
 let stutter_class = 'stutter_scroll_stop_here';
 
@@ -376,7 +376,6 @@ function stutterPage() {
                     activeTimeout = setTimeout(waitForSpecifiedTime, WAIT_TIME_INCREMENT);
             });
         }
-
     });
 }
 
