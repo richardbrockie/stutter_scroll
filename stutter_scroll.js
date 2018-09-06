@@ -299,6 +299,7 @@ function loadPage() {
                             // activeTimeout = setTimeout(stutterPage, initial_pause * 1000);
                             //
                             debug_log('Calling waitForSpecifiedTime - timeout (s): ' + initial_pause);
+                            elapsedWaitTime = 0;
                             requiredWaitTime = initial_pause * 1000;
                             activeTimeout = setTimeout(waitForSpecifiedTime, WAIT_TIME_INCREMENT);
                         });
