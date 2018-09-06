@@ -8,12 +8,14 @@ const DEBUG_LOG_TO_CONSOLE = false;
 let active = false;
 
 let initial_pause = 5;
-let stutter_pause = 8;
+let stutter_pause = 6;
 
 let stutter_class = 'stutter_scroll_stop_here';
 
 // let url_list = 'https://ontheday.net/\nhttps://google.com/';
-let url_list = 'http://127.0.0.1:8000/2018/bay_climb/tournament/open_men/\nhttp://127.0.0.1:8000/2018/bay_climb/otd_ftw/\nhttp://127.0.0.1:8000/2018/bay_climb/tournament/men_fixed/\nhttp://127.0.0.1:8000/2018/bay_climb/otd_ftw/\nhttp://127.0.0.1:8000/2018/bay_climb/tournament/open_women/\nhttp://127.0.0.1:8000/2018/bay_climb/otd_ftw/\nhttp://127.0.0.1:8000/2018/bay_climb/tournament/women_fixed/\nhttp://127.0.0.1:8000/2018/bay_climb/otd_ftw/';
+// let url_list = 'http://127.0.0.1:8000/2018/bay_climb/tournament/open_men/\nhttp://127.0.0.1:8000/2018/bay_climb/otd_ftw/\nhttp://127.0.0.1:8000/2018/bay_climb/tournament/men_fixed/\nhttp://127.0.0.1:8000/2018/bay_climb/otd_ftw/\nhttp://127.0.0.1:8000/2018/bay_climb/tournament/open_women/\nhttp://127.0.0.1:8000/2018/bay_climb/otd_ftw/\nhttp://127.0.0.1:8000/2018/bay_climb/tournament/women_fixed/\nhttp://127.0.0.1:8000/2018/bay_climb/otd_ftw/';
+
+let url_list = 'https://ontheday.net/2018/bay_climb/\nhttps://ontheday.net/2018/bay_climb/otd_ftw/\nhttps://ontheday.net/2018/bay_climb/tournament/open_men/\nhttps://ontheday.net/2018/bay_climb/otd_ftw/\nhttps://ontheday.net/2018/bay_climb/tournament/open_women/\nhttps://ontheday.net/2018/bay_climb/otd_ftw/\nhttps://ontheday.net/2018/bay_climb/tournament/men_fixed/\nhttps://ontheday.net/2018/bay_climb/otd_ftw/\nhttps://ontheday.net/2018/bay_climb/tournament/women_fixed/\nhttps://ontheday.net/2018/bay_climb/otd_ftw/'
 
 let split_urls = 'tbd';
 let url_index = 0;

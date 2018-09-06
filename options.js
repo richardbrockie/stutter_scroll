@@ -3,11 +3,13 @@
 // duplication of constants is annoying...
 
 let DEFAULT_INITIAL_PAUSE = "5";
-let DEFAULT_STUTTER_PAUSE = "8";
+let DEFAULT_STUTTER_PAUSE = "6";
 let DEFAULT_STUTTER_CLASS = "stutter_scroll_stop_here";
 
 // let DEFAULT_URL_LIST = "https://ontheday.net/\nhttps://google.com/";
-let DEFAULT_URL_LIST = 'http://127.0.0.1:8000/2018/bay_climb/tournament/open_men/\nhttp://127.0.0.1:8000/2018/bay_climb/otd_ftw/\nhttp://127.0.0.1:8000/2018/bay_climb/tournament/men_fixed/\nhttp://127.0.0.1:8000/2018/bay_climb/otd_ftw/\nhttp://127.0.0.1:8000/2018/bay_climb/tournament/open_women/\nhttp://127.0.0.1:8000/2018/bay_climb/otd_ftw/\nhttp://127.0.0.1:8000/2018/bay_climb/tournament/women_fixed/\nhttp://127.0.0.1:8000/2018/bay_climb/otd_ftw/';
+// let DEFAULT_URL_LIST = 'http://127.0.0.1:8000/2018/bay_climb/tournament/open_men/\nhttp://127.0.0.1:8000/2018/bay_climb/otd_ftw/\nhttp://127.0.0.1:8000/2018/bay_climb/tournament/men_fixed/\nhttp://127.0.0.1:8000/2018/bay_climb/otd_ftw/\nhttp://127.0.0.1:8000/2018/bay_climb/tournament/open_women/\nhttp://127.0.0.1:8000/2018/bay_climb/otd_ftw/\nhttp://127.0.0.1:8000/2018/bay_climb/tournament/women_fixed/\nhttp://127.0.0.1:8000/2018/bay_climb/otd_ftw/';
+
+let DEFAULT_URL_LIST = 'https://ontheday.net/2018/bay_climb/\nhttps://ontheday.net/2018/bay_climb/otd_ftw/\nhttps://ontheday.net/2018/bay_climb/tournament/open_men/\nhttps://ontheday.net/2018/bay_climb/otd_ftw/\nhttps://ontheday.net/2018/bay_climb/tournament/open_women/\nhttps://ontheday.net/2018/bay_climb/otd_ftw/\nhttps://ontheday.net/2018/bay_climb/tournament/men_fixed/\nhttps://ontheday.net/2018/bay_climb/otd_ftw/\nhttps://ontheday.net/2018/bay_climb/tournament/women_fixed/\nhttps://ontheday.net/2018/bay_climb/otd_ftw/'
 
 function saveOptions(e) {
     e.preventDefault();

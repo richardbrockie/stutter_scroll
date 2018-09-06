@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Stutter Scroll",
-  "version": "0.1.5",
+  "version": "1.0",
   "homepage_url": "https://github.com/richardbrockie/stutter_scroll",
 
   "description": "Use a set of webpages as digital signage. \n\nReading scrolling text is difficult - Stutter Scroll pauses as it scrolls through a set of webpages. Pauses occur at instances of a specified css class - these tags should each have a unique #id selector assigned. Stutter Scroll scrolls to each #id in turn.\n\nMore info at GitHub.",
