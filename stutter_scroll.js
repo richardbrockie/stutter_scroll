@@ -202,7 +202,8 @@ function loadPage() {
             // }
 
             if (page_url.length === 0 ) {
-                setDormantState();
+                // setDormantState();
+                loadPage();
                 return;
             }
 
